@@ -1,6 +1,6 @@
-import { Post } from "./components/post";
+import { Posts } from "./components/posts";
 function App() {
-    return <Post />;
+    return <Posts />;
 }
 
 export default App;
