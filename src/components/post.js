@@ -44,7 +44,7 @@ export const Post = ({ data }) => {
                 </Button>
             </div>
 
-            {isClicked && !comments.loadingComments && (
+            {isClicked && comments && (
                 <div>
                     {comments.map((x) => (
                         <Comment data={x} />
