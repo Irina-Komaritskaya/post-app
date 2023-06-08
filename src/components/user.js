@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { Post } from "./post";
 import styles from "./user.module.css";
 import avatar from "../img/avatar.jpg";
-import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Stack from "react-bootstrap/Stack";
 import Row from "react-bootstrap/Row";

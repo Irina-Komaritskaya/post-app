@@ -9,7 +9,8 @@ import { Comment } from "./comment";
 import avatar from "../img/avatar.jpg";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-
+import Stack from "react-bootstrap/Stack";
+import Image from "react-bootstrap/Image";
 export const Post = ({ data }) => {
     const { comments } = useSelector((state) => state.comments);
     const [isClicked, setIsClicked] = useState(false);
@@ -23,13 +24,12 @@ export const Post = ({ data }) => {
 
     return (
         <Container className={styles.post}>
-            <Link to={`/user/${data.userId}`}>
-                <div className={styles.avatar}>
-                    <img src={avatar} alt="avatar" />
-                    <div className={styles.user}>User</div>
-                </div>
-            </Link>
-
+            <Stack direction="horizontal" className={styles.avatar}>
+                <Link to={`/user/${data.userId}`}>
+                    <Image src={avatar} roundedCircle alt="avatar" />
+                </Link>
+                <div className={styles.user}>User</div>
+            </Stack>
             <div className={styles.title}>{data.title}</div>
             <div className={styles.text}>{data.body}</div>
             <div className={styles.button}>

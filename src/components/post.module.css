@@ -15,16 +15,7 @@
 .text::first-letter {
     text-transform: uppercase;
 }
-.text {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 24px;
-}
-.avatar {
-    display: flex;
-    align-items: center;
-}
+
 .avatar img {
     height: 30px;
     width: 30px;
@@ -34,10 +25,7 @@
 }
 .user {
     margin-left: 10px;
-    font-style: normal;
     font-weight: bold;
-    font-size: 14px;
-    line-height: 24px;
 }
 
 .button {
