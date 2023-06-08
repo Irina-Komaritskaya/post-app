@@ -3,13 +3,22 @@ import {
     GET_POSTS,
     GET_COMMENTS,
     GET_COMMENTS_SUCCESS,
+    GET_USER,
+    GET_USER_SUCCESS,
+    GET_USER_POSTS,
+    GET_USER_POSTS_SUCCESS,
 } from "./action-types";
 
 const initialState = {
     posts: [],
+    comments: [],
+    user: {},
+    userPosts: [],
+    loadingUser: false,
     loadingPosts: false,
     loadingComments: false,
-    comments: [],
+    loadingUserPosts: false,
+
     error: {
         message: "",
     },
@@ -39,6 +48,44 @@ export const commentsReducer = (state = initialState, action) => {
                 ...state,
                 comments: action.payload,
                 loadingComments: false,
+            };
+            break;
+        default:
+            state = { ...state };
+            break;
+    }
+    return state;
+};
+
+export const userReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case GET_USER:
+            state = { ...state, loadingUser: true };
+            break;
+        case GET_USER_SUCCESS:
+            state = {
+                ...state,
+                user: action.payload,
+                loadingUser: false,
+            };
+            break;
+        default:
+            state = { ...state };
+            break;
+    }
+    return state;
+};
+
+export const userPostsReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case GET_USER_POSTS:
+            state = { ...state, loadingUserPosts: true };
+            break;
+        case GET_USER_POSTS_SUCCESS:
+            state = {
+                ...state,
+                userPosts: action.payload,
+                loadingUserPosts: false,
             };
             console.log(state);
             break;

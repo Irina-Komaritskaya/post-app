@@ -1,13 +1,14 @@
-import styles from "./post.module.css";
-import { Comment } from "./comment";
-import avatar from "../img/avatar.jpg";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
 import { getComments } from "../store/actions";
 import { useDispatch } from "react-redux";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import styles from "./post.module.css";
+import { Comment } from "./comment";
+import avatar from "../img/avatar.jpg";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 
 export const Post = ({ data }) => {
     const { comments } = useSelector((state) => state.comments);
@@ -22,10 +23,12 @@ export const Post = ({ data }) => {
 
     return (
         <Container className={styles.post}>
-            <div className={styles.avatar}>
-                <img src={avatar} alt="avatar" />
-                <div className={styles.user}>User</div>
-            </div>
+            <Link to={`/user/${data.userId}`}>
+                <div className={styles.avatar}>
+                    <img src={avatar} alt="avatar" />
+                    <div className={styles.user}>User</div>
+                </div>
+            </Link>
 
             <div className={styles.title}>{data.title}</div>
             <div className={styles.text}>{data.body}</div>
