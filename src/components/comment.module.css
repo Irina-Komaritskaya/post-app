@@ -1,0 +1,15 @@
+.name {
+    font-weight: bold;
+    background-color: rgba(31, 32, 65, 0.05);
+    padding-left: 10px;
+}
+.text {
+    margin-left: 10px;
+    font-weight: normal;
+}
+.text,
+.name {
+    font-style: normal;
+    font-size: 14px;
+    line-height: 24px;
+}

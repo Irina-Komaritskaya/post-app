@@ -7,12 +7,12 @@ import { Post } from "./post";
 
 export const Posts = () => {
     const { posts } = useSelector((state) => state.posts);
-    console.log(posts);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getPosts());
     }, []);
+
     return (
         <div className="posts">
             {posts.map((x) => (
