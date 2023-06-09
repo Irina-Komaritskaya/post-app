@@ -1,3 +1,4 @@
+//- коментарий загружается каждый раз при нажатии
 import { getComments } from "../store/actions";
 import { useDispatch } from "react-redux";
 import React, { useEffect } from "react";

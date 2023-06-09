@@ -7,8 +7,10 @@ import {
     GET_USER_SUCCESS,
     GET_USER_POSTS,
     GET_USER_POSTS_SUCCESS,
+    PUT_FILTERED_POSTS,
+    PUT_FILTERED_POSTS_SUCCESS,
 } from "./action-types";
-
+import { filterPosts } from "../services/filterPosts";
 const initialState = {
     posts: [],
     comments: [],
@@ -18,7 +20,8 @@ const initialState = {
     loadingPosts: false,
     loadingComments: false,
     loadingUserPosts: false,
-
+    filteredPosts: [],
+    loadingfilteredPosts: false,
     error: {
         message: "",
     },
@@ -31,6 +34,18 @@ export const postsReducer = (state = initialState, action) => {
         case GET_POSTS_SUCCESS:
             state = { ...state, posts: action.payload, loadingPosts: false };
             break;
+        case PUT_FILTERED_POSTS:
+            state = { ...state, filteredPosts: filterPosts(action.payload) };
+            break;
+        // case PUT_FILTERED_POSTS_SUCCESS:
+        //     console.log(state);
+        //     state = {
+        //         ...state,
+        //         filteredPosts: filterPosts(action.payload),
+        //         loadingfilteredPosts: false,
+        //     };
+
+        //     break;
         default:
             state = { ...state };
             break;

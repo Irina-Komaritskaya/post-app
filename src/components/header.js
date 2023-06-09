@@ -15,7 +15,7 @@ export const Header = () => {
                     aria-labelledby={`offcanvasNavbarLabel-expand-false`}
                     placement="start"
                 >
-                    <Offcanvas.Header closeButton>
+                    <Offcanvas.Header closeButton aria-label="Hide">
                         <Offcanvas.Title>Lorem ipsum</Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>

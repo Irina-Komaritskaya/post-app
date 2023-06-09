@@ -7,6 +7,8 @@ import {
     GET_USER_SUCCESS,
     GET_USER_POSTS,
     GET_USER_POSTS_SUCCESS,
+    PUT_FILTERED_POSTS,
+    PUT_FILTERED_POSTS_SUCCESS,
 } from "./action-types";
 
 export const getPosts = () => {
@@ -63,3 +65,18 @@ export const getUserPostsSuccess = (posts) => {
         payload: posts,
     };
 };
+
+export const putFilteredPosts = (filteredPosts) => {
+    return {
+        type: PUT_FILTERED_POSTS,
+        payload: filteredPosts,
+    };
+};
+
+// export const putFilteredPostsSuccess = (filteredPosts) => {
+//     console.log(filteredPosts);
+//     return {
+//         type: PUT_FILTERED_POSTS_SUCCESS,
+//         payload: filteredPosts,
+//     };
+// };
