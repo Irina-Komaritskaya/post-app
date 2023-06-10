@@ -14,7 +14,6 @@ import {
     putFilteredPostsSuccess,
 } from "./actions";
 import { getPosts, getComments, getUser, getUserPosts } from "../api/agent";
-import { filterPosts } from "../services/filterPosts";
 
 function* onGetPosts() {
     try {
@@ -49,20 +48,10 @@ function* onGetUserPosts({ payload: id }) {
     }
 }
 
-// function* onPutFilteredPosts({ payload: data }) {
-//     try {
-//         const response = yield call(filterPosts, data);
-//         yield put(putFilteredPostsSuccess(response));
-//     } catch (error) {
-//         // yield put(getPostsFail(error.response));
-//     }
-// }
-
 function* PostsSaga() {
     yield takeLatest(GET_POSTS, onGetPosts);
     yield takeLatest(GET_COMMENTS, onGetComments);
     yield takeLatest(GET_USER, onGetUser);
     yield takeLatest(GET_USER_POSTS, onGetUserPosts);
-    // yield takeLatest(PUT_FILTERED_POSTS, onPutFilteredPosts);
 }
 export default PostsSaga;

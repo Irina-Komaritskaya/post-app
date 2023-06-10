@@ -7,9 +7,11 @@ import { useSelector } from "react-redux";
 import { Post } from "./post";
 import Container from "react-bootstrap/Container";
 import { Search } from "./search";
-import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
+import { ToggleSort } from "./toggle-sort";
 import { Paging } from "./pagination";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 export const Posts = () => {
     const { posts } = useSelector((state) => state.posts);
     const { filteredPosts } = useSelector((state) => state.posts);
@@ -22,19 +24,20 @@ export const Posts = () => {
     }, []);
 
     return (
-        <>
-            <Search data={posts} />
-            <ButtonGroup className="me-2" aria-label="First group">
-                <Button variant="secondary">1</Button>
-                <Button variant="secondary">2</Button>
-                <Button variant="secondary">3</Button>
-                <Button variant="secondary">4</Button>
-            </ButtonGroup>
+        <Container>
+            <Row>
+                <Col xs="auto" md={7}>
+                    <Search data={posts} />
+                </Col>
+                <Col xs="auto" md={4}>
+                    <ToggleSort />
+                </Col>
+            </Row>
             <Paging
                 items={posts.map((x) => (
                     <Post data={x} />
                 ))}
             ></Paging>
-        </>
+        </Container>
     );
 };

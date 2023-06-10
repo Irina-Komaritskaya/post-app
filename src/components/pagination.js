@@ -29,9 +29,9 @@ export const Paging = ({ items }) => {
         );
     }
     return (
-        <Container>
+        <>
             {itemsPage}
             <Pagination>{pages}</Pagination>
-        </Container>
+        </>
     );
 };
