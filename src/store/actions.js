@@ -8,8 +8,13 @@ import {
     GET_USER_POSTS,
     GET_USER_POSTS_SUCCESS,
     PUT_FILTERED_POSTS,
-    PUT_FILTERED_POSTS_SUCCESS,
     SORT_POSTS,
+    DEL_FILTERED_POSTS,
+    DEL_SORT_POSTS,
+    GET_POSTS_FAIL,
+    GET_USER_FAIL,
+    GET_USER_POSTS_FAIL,
+    GET_COMMENTS_FAIL,
 } from "./action-types";
 
 export const getPosts = () => {
@@ -17,11 +22,16 @@ export const getPosts = () => {
         type: GET_POSTS,
     };
 };
-
 export const getPostsSuccess = (posts) => {
     return {
         type: GET_POSTS_SUCCESS,
         payload: posts,
+    };
+};
+export const getPostsFail = (error) => {
+    return {
+        type: GET_POSTS_FAIL,
+        payload: error,
     };
 };
 
@@ -31,11 +41,16 @@ export const getComments = (id) => {
         payload: id,
     };
 };
-
 export const getCommentsSuccess = (comments) => {
     return {
         type: GET_COMMENTS_SUCCESS,
         payload: comments,
+    };
+};
+export const getCommentsFail = (error) => {
+    return {
+        type: GET_COMMENTS_FAIL,
+        payload: error,
     };
 };
 
@@ -45,11 +60,16 @@ export const getUser = (id) => {
         payload: id,
     };
 };
-
 export const getUserSuccess = (user) => {
     return {
         type: GET_USER_SUCCESS,
         payload: user,
+    };
+};
+export const getUserFail = (error) => {
+    return {
+        type: GET_USER_FAIL,
+        payload: error,
     };
 };
 
@@ -59,11 +79,16 @@ export const getUserPosts = (id) => {
         payload: id,
     };
 };
-
 export const getUserPostsSuccess = (posts) => {
     return {
         type: GET_USER_POSTS_SUCCESS,
         payload: posts,
+    };
+};
+export const getUserPostsFail = (error) => {
+    return {
+        type: GET_USER_POSTS_FAIL,
+        payload: error,
     };
 };
 
@@ -81,10 +106,14 @@ export const SortedPosts = (sortPosts) => {
     };
 };
 
-// export const putFilteredPostsSuccess = (filteredPosts) => {
-//     console.log(filteredPosts);
-//     return {
-//         type: PUT_FILTERED_POSTS_SUCCESS,
-//         payload: filteredPosts,
-//     };
-// };
+export const DelSortedPosts = () => {
+    return {
+        type: DEL_SORT_POSTS,
+    };
+};
+
+export const DelFilteredPosts = () => {
+    return {
+        type: DEL_FILTERED_POSTS,
+    };
+};

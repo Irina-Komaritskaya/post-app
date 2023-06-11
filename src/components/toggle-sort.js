@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { useDispatch } from "react-redux";
-import { SortedPosts } from "../store/actions";
+import { SortedPosts, DelSortedPosts } from "../store/actions";
 
 export const ToggleSort = ({ posts }) => {
-    const [radioValue, setRadioValue] = useState("0");
+    const [radioValue, setRadioValue] = useState("");
     const dispatch = useDispatch();
     const radios = [
         { name: "A-Z", value: "1" },
@@ -16,7 +16,7 @@ export const ToggleSort = ({ posts }) => {
     useEffect(() => {
         if (radioValue === "1") dispatch(SortedPosts(posts));
         // if (radioValue === "2") dispatch(SortedPosts(posts).reverse());
-        // if (radioValue === 0)
+        // if (radioValue === 0) dispatch(DelSortedPosts())
     }, [radioValue]);
 
     return (

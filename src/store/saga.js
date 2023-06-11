@@ -4,14 +4,16 @@ import {
     GET_COMMENTS,
     GET_USER,
     GET_USER_POSTS,
-    PUT_FILTERED_POSTS,
 } from "./action-types";
 import {
     getPostsSuccess,
     getCommentsSuccess,
     getUserSuccess,
     getUserPostsSuccess,
-    putFilteredPostsSuccess,
+    getCommentsFail,
+    getPostsFail,
+    getUserFail,
+    getUserPostsFail,
 } from "./actions";
 import { getPosts, getComments, getUser, getUserPosts } from "../api/agent";
 
@@ -20,7 +22,7 @@ function* onGetPosts() {
         const response = yield call(getPosts);
         yield put(getPostsSuccess(response));
     } catch (error) {
-        // yield put(getPostsFail(error.response));
+        yield put(getPostsFail(error.response));
     }
 }
 function* onGetComments({ payload: id }) {
@@ -28,7 +30,7 @@ function* onGetComments({ payload: id }) {
         const response = yield call(getComments, id);
         yield put(getCommentsSuccess(response));
     } catch (error) {
-        // yield put(getPostsFail(error.response));
+        yield put(getCommentsFail(error.response));
     }
 }
 function* onGetUser({ payload: id }) {
@@ -36,7 +38,7 @@ function* onGetUser({ payload: id }) {
         const response = yield call(getUser, id);
         yield put(getUserSuccess(response));
     } catch (error) {
-        // yield put(getPostsFail(error.response));
+        yield put(getUserFail(error.response));
     }
 }
 function* onGetUserPosts({ payload: id }) {
@@ -44,7 +46,7 @@ function* onGetUserPosts({ payload: id }) {
         const response = yield call(getUserPosts, id);
         yield put(getUserPostsSuccess(response));
     } catch (error) {
-        // yield put(getPostsFail(error.response));
+        yield put(getUserPostsFail(error.response));
     }
 }
 

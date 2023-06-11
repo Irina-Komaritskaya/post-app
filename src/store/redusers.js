@@ -9,7 +9,12 @@ import {
     GET_USER_POSTS_SUCCESS,
     PUT_FILTERED_POSTS,
     SORT_POSTS,
-    PUT_FILTERED_POSTS_SUCCESS,
+    DEL_FILTERED_POSTS,
+    DEL_SORT_POSTS,
+    GET_COMMENTS_FAIL,
+    GET_POSTS_FAIL,
+    GET_USER_FAIL,
+    GET_USER_POSTS_FAIL,
 } from "./action-types";
 import { filterPosts, sortPosts } from "../services/utils";
 const initialState = {
@@ -36,22 +41,29 @@ export const postsReducer = (state = initialState, action) => {
         case GET_POSTS_SUCCESS:
             state = { ...state, posts: action.payload, loadingPosts: false };
             break;
+        case GET_POSTS_FAIL:
+            state = {
+                ...state,
+                error: {
+                    message: "Error",
+                },
+                loadingPosts: false,
+            };
+            break;
         case PUT_FILTERED_POSTS:
             state = { ...state, filteredPosts: filterPosts(action.payload) };
             break;
         case SORT_POSTS:
-            state = { ...state, filteredPosts: sortPosts(action.payload) };
+            state = { ...state, sortPosts: sortPosts(action.payload) };
+            break;
+        case DEL_SORT_POSTS:
+            state = { ...state, sortPosts: [] };
             console.log(state);
             break;
-        // case PUT_FILTERED_POSTS_SUCCESS:
-        //     console.log(state);
-        //     state = {
-        //         ...state,
-        //         filteredPosts: filterPosts(action.payload),
-        //         loadingfilteredPosts: false,
-        //     };
-
-        //     break;
+        case DEL_FILTERED_POSTS:
+            state = { ...state, filteredPosts: [] };
+            console.log(state);
+            break;
         default:
             state = { ...state };
             break;
@@ -68,6 +80,15 @@ export const commentsReducer = (state = initialState, action) => {
             state = {
                 ...state,
                 comments: action.payload,
+                loadingComments: false,
+            };
+            break;
+        case GET_COMMENTS_FAIL:
+            state = {
+                ...state,
+                error: {
+                    message: "Error",
+                },
                 loadingComments: false,
             };
             break;
@@ -90,6 +111,15 @@ export const userReducer = (state = initialState, action) => {
                 loadingUser: false,
             };
             break;
+        case GET_USER_FAIL:
+            state = {
+                ...state,
+                error: {
+                    message: "Error",
+                },
+                loadingUser: false,
+            };
+            break;
         default:
             state = { ...state };
             break;
@@ -108,7 +138,15 @@ export const userPostsReducer = (state = initialState, action) => {
                 userPosts: action.payload,
                 loadingUserPosts: false,
             };
-            console.log(state);
+            break;
+        case GET_USER_POSTS_FAIL:
+            state = {
+                ...state,
+                error: {
+                    message: "Error",
+                },
+                loadingUserPosts: false,
+            };
             break;
         default:
             state = { ...state };
