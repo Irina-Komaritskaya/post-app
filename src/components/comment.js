@@ -1,6 +1,5 @@
 import Container from "react-bootstrap/Container";
 export const Comment = ({ data }) => {
-    console.log(data);
     return (
         <Container className="pt-2">
             <div className="fw-bold bg-light">{data.email}</div>

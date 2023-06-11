@@ -27,7 +27,7 @@ const initialState = {
     loadingComments: false,
     loadingUserPosts: false,
     filteredPosts: [],
-    sortPosts: [],
+    sortedPosts: [],
     loadingfilteredPosts: false,
     error: {
         message: "",
@@ -54,10 +54,11 @@ export const postsReducer = (state = initialState, action) => {
             state = { ...state, filteredPosts: filterPosts(action.payload) };
             break;
         case SORT_POSTS:
-            state = { ...state, sortPosts: sortPosts(action.payload) };
+            state = { ...state, sortedPosts: sortPosts(action.payload) };
+            console.log(state.sortedPosts);
             break;
         case DEL_SORT_POSTS:
-            state = { ...state, sortPosts: [] };
+            state = { ...state, sortedPosts: [] };
             console.log(state);
             break;
         case DEL_FILTERED_POSTS:

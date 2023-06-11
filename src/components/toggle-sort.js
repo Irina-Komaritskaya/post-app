@@ -14,9 +14,11 @@ export const ToggleSort = ({ posts }) => {
     ];
 
     useEffect(() => {
-        if (radioValue === "1") dispatch(SortedPosts(posts));
-        // if (radioValue === "2") dispatch(SortedPosts(posts).reverse());
-        // if (radioValue === 0) dispatch(DelSortedPosts())
+        if (radioValue === "1")
+            dispatch(SortedPosts({ posts: posts, order: "ASC" }));
+        if (radioValue === "2")
+            dispatch(SortedPosts({ posts: posts, order: "DESC" }));
+        if (radioValue === "0") dispatch(DelSortedPosts());
     }, [radioValue]);
 
     return (

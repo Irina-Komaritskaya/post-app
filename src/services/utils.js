@@ -4,13 +4,21 @@ export const filterPosts = ({ value, property, posts }) => {
     });
 };
 
-export const sortPosts = (posts) => {
-    console.log(posts);
-    posts.sort(function (a, b) {
-        var titleA = a.title.toLowerCase(),
+export const sortPosts = ({ posts, order }) => {
+    const result = [...posts].sort(function (a, b) {
+        let titleA = a.title.toLowerCase(),
             titleB = b.title.toLowerCase();
-        if (titleA < titleB) return -1;
-        if (titleA > titleB) return 1;
+        if (order === "ASC") {
+            if (titleA < titleB) return -1;
+            if (titleA > titleB) return 1;
+        }
+        if (order === "DESC") {
+            if (titleA > titleB) return -1;
+            if (titleA < titleB) return 1;
+        }
+
         return 0;
     });
+    console.log(order);
+    return result;
 };

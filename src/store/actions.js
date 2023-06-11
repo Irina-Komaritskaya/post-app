@@ -92,10 +92,10 @@ export const getUserPostsFail = (error) => {
     };
 };
 
-export const putFilteredPosts = (filteredPosts) => {
+export const putFilteredPosts = (payload) => {
     return {
         type: PUT_FILTERED_POSTS,
-        payload: filteredPosts,
+        payload: payload,
     };
 };
 
