@@ -25,12 +25,12 @@ export const Posts = () => {
 
     return (
         <Container>
-            <Row>
+            <Row className="mb-3">
                 <Col xs="auto" md={7}>
                     <Search data={posts} />
                 </Col>
                 <Col xs="auto" md={4}>
-                    <ToggleSort />
+                    <ToggleSort posts={posts} />
                 </Col>
             </Row>
             <Paging

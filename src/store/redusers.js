@@ -8,9 +8,10 @@ import {
     GET_USER_POSTS,
     GET_USER_POSTS_SUCCESS,
     PUT_FILTERED_POSTS,
+    SORT_POSTS,
     PUT_FILTERED_POSTS_SUCCESS,
 } from "./action-types";
-import { filterPosts } from "../services/filterPosts";
+import { filterPosts, sortPosts } from "../services/utils";
 const initialState = {
     posts: [],
     comments: [],
@@ -21,6 +22,7 @@ const initialState = {
     loadingComments: false,
     loadingUserPosts: false,
     filteredPosts: [],
+    sortPosts: [],
     loadingfilteredPosts: false,
     error: {
         message: "",
@@ -36,6 +38,10 @@ export const postsReducer = (state = initialState, action) => {
             break;
         case PUT_FILTERED_POSTS:
             state = { ...state, filteredPosts: filterPosts(action.payload) };
+            break;
+        case SORT_POSTS:
+            state = { ...state, filteredPosts: sortPosts(action.payload) };
+            console.log(state);
             break;
         // case PUT_FILTERED_POSTS_SUCCESS:
         //     console.log(state);

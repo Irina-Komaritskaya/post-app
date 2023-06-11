@@ -9,6 +9,7 @@ import {
     GET_USER_POSTS_SUCCESS,
     PUT_FILTERED_POSTS,
     PUT_FILTERED_POSTS_SUCCESS,
+    SORT_POSTS,
 } from "./action-types";
 
 export const getPosts = () => {
@@ -70,6 +71,13 @@ export const putFilteredPosts = (filteredPosts) => {
     return {
         type: PUT_FILTERED_POSTS,
         payload: filteredPosts,
+    };
+};
+
+export const SortedPosts = (sortPosts) => {
+    return {
+        type: SORT_POSTS,
+        payload: sortPosts,
     };
 };
 
