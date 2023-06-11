@@ -5,7 +5,6 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "./post.module.css";
 import { Comment } from "./comment";
 import avatar from "../img/avatar.jpg";
 import Container from "react-bootstrap/Container";
@@ -24,16 +23,16 @@ export const Post = ({ data }) => {
     }, [isClicked]);
 
     return (
-        <Container className={styles.post}>
-            <Stack direction="horizontal" className={styles.avatar}>
+        <Container className="filter bg-white mb-2 p-2">
+            <Stack direction="horizontal" className="avatar">
                 <Link to={`/user/${data.userId}`}>
                     <Image src={avatar} roundedCircle alt="avatar" />
                 </Link>
-                <div className={styles.user}>User</div>
+                <div className="ms-2 fw-bold">User</div>
             </Stack>
-            <div className={styles.title}>{data.title}</div>
-            <div className={styles.text}>{data.body}</div>
-            <div className={styles.button}>
+            <h2 className="fw-bold text-lowercase fs-5">{data.title}</h2>
+            <p className="text-lowercase">{data.body}</p>
+            <div className="d-flex justify-content-end">
                 <Button
                     onClick={() => {
                         setIsClicked(isClicked === true ? false : true);

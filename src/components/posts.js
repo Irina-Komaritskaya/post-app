@@ -25,11 +25,11 @@ export const Posts = () => {
 
     return (
         <Container>
-            <Row className="mb-3">
-                <Col xs="auto" md={7}>
+            <Row className="mb-3 justify-content-between align-items-end gap-2">
+                <Col xs="auto" md={5}>
                     <Search data={posts} />
                 </Col>
-                <Col xs="auto" md={4}>
+                <Col xs="auto" md={3} lg={2}>
                     <ToggleSort posts={posts} />
                 </Col>
             </Row>

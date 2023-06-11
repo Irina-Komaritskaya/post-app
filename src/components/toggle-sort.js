@@ -20,7 +20,7 @@ export const ToggleSort = ({ posts }) => {
     }, [radioValue]);
 
     return (
-        <ButtonGroup type="radio" className="me-2" aria-label="Sort group">
+        <ButtonGroup type="radio" size="sm" aria-label="Sort group">
             {radios.map((radio, idx) => (
                 <ToggleButton
                     key={idx}

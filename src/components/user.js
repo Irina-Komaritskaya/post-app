@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { getUser, getUserPosts } from "../store/actions";
 import { useSelector } from "react-redux";
 import { Post } from "./post";
-import styles from "./user.module.css";
 import avatar from "../img/avatar.jpg";
 import Card from "react-bootstrap/Card";
 import Stack from "react-bootstrap/Stack";
@@ -25,27 +24,27 @@ export const User = () => {
     }, [param.id]);
 
     return (
-        <Row className={styles.inner}>
+        <Row className="justify-content-center p-2">
             <Col xs="auto" md={4}>
-                <Card className={styles.card}>
+                <Card>
                     <Card.Body>
                         <Card.Img variant="top" src={avatar} alt="avatar" />
-                        <Card.Title className={styles.title}>
+                        <Card.Title className="text-center mt-2 mb-3">
                             {"@" + user.username}
                         </Card.Title>
                         <Card.Text>
                             <Stack gap={3}>
                                 <Stack direction="horizontal" gap={1}>
-                                    <div className={styles.label}>Name:</div>
+                                    <div className="fw-bold">Name:</div>
                                     <div>{user.name}</div>
                                 </Stack>
 
                                 <Stack direction="horizontal" gap={1}>
-                                    <div className={styles.label}>Email:</div>
+                                    <div className="fw-bold">Email:</div>
                                     <div>{user.email}</div>
                                 </Stack>
                                 <Stack direction="horizontal" gap={1}>
-                                    <div className={styles.label}>Website:</div>
+                                    <div className="fw-bold">Website:</div>
                                     <div>{user.website}</div>
                                 </Stack>
                             </Stack>
@@ -53,7 +52,7 @@ export const User = () => {
                     </Card.Body>
                 </Card>
             </Col>
-            <Col xs="auto" md={7} className={styles.posts}>
+            <Col xs="auto" md={8}>
                 {userPosts.map((x) => (
                     <Post data={x} />
                 ))}
