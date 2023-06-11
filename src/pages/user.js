@@ -5,9 +5,6 @@ import { getUser, getUserPosts } from "../store/actions";
 import { useSelector } from "react-redux";
 import { Post } from "../components/post";
 import { User } from "../components/user";
-import avatar from "../img/avatar.jpg";
-import Card from "react-bootstrap/Card";
-import Stack from "react-bootstrap/Stack";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 

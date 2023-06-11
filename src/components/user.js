@@ -1,6 +1,7 @@
 import avatar from "../img/avatar.jpg";
 import Card from "react-bootstrap/Card";
 import Stack from "react-bootstrap/Stack";
+import { Link } from "react-router-dom";
 export const User = ({ user }) => {
     return (
         <Card>
@@ -22,7 +23,12 @@ export const User = ({ user }) => {
                         </Stack>
                         <Stack direction="horizontal" gap={1}>
                             <div className="fw-bold">Website:</div>
-                            <div>{user.website}</div>
+                            <a
+                                target="_blank"
+                                href={`https:// + ${user.website}`}
+                            >
+                                {user.website}
+                            </a>
                         </Stack>
                     </Stack>
                 </Card.Text>

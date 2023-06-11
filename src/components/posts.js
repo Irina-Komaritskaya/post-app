@@ -6,14 +6,12 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Post } from "./post";
 import Container from "react-bootstrap/Container";
-import { Search } from "./search";
-import { ToggleSort } from "./toggle-sort";
 import { Paging } from "./pagination";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import Spinner from "react-bootstrap/Spinner";
 
 export const Posts = () => {
     const { posts } = useSelector((state) => state.posts);
+    const loadingPost = posts.loadingPost;
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -22,6 +20,8 @@ export const Posts = () => {
 
     return (
         <Container>
+            {loadingPost && <Spinner animation="grow" variant="secondary" />}
+
             <Paging
                 items={posts.map((x) => (
                     <Post data={x} />
