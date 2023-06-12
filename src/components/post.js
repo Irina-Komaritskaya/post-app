@@ -26,7 +26,6 @@ export const Post = ({ data }) => {
     }, [isClicked, data.id, dispatch]);
 
     useEffect(() => {
-        console.log(data.id, isClicked);
         const timer = setTimeout(() => {
             setloading(false);
         }, 3000);
