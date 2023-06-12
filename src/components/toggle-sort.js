@@ -19,7 +19,7 @@ export const ToggleSort = ({ posts }) => {
         if (radioValue === "2")
             dispatch(SortedPosts({ posts: posts, order: "DESC" }));
         if (radioValue === "0") dispatch(DelSortedPosts());
-    }, [radioValue]);
+    }, [radioValue, dispatch, posts]);
 
     return (
         <ButtonGroup type="radio" size="sm" aria-label="Sort group">

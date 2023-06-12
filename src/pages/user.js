@@ -17,10 +17,11 @@ export const UserPage = () => {
 
     useEffect(() => {
         dispatch(getUser(param.id));
-    }, [param.id]);
+    }, [param.id, dispatch]);
+
     useEffect(() => {
         dispatch(getUserPosts(param.id));
-    }, [param.id]);
+    }, [param.id, dispatch]);
 
     return (
         <Row className="justify-content-center p-2">

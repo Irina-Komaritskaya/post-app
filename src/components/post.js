@@ -1,4 +1,3 @@
-//- коментарий загружается каждый раз при нажатии
 import { getComments } from "../store/actions";
 import { useDispatch } from "react-redux";
 import React, { useEffect } from "react";
@@ -17,14 +16,12 @@ export const Post = ({ data }) => {
     const { comments } = useSelector((state) => state.comments);
     const [isClicked, setIsClicked] = useState(false);
     const dispatch = useDispatch();
-    console.log(isClicked);
 
     useEffect(() => {
         if (isClicked === true) {
-            console.log(comments);
             dispatch(getComments(data.id));
         }
-    }, [isClicked]);
+    }, [isClicked, data.id, dispatch]);
 
     return (
         <Container className="filter bg-white mb-2 p-2">
@@ -39,7 +36,6 @@ export const Post = ({ data }) => {
             <div className="d-flex justify-content-end">
                 <Button
                     onClick={() => {
-                        console.log(1);
                         setIsClicked(isClicked === true ? false : true);
                     }}
                     variant="outline-secondary"

@@ -18,7 +18,7 @@ export const Home = () => {
 
     useEffect(() => {
         dispatch(getPosts());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         if (sortedPosts && sortedPosts.length) {

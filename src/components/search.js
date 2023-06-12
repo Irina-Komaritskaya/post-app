@@ -26,7 +26,7 @@ export const Search = ({ data }) => {
             );
             setIsClicked(false);
         }
-    }, [isClicked]);
+    }, [isClicked, data, dispatch, str]);
 
     const cleanHendler = () => {
         setIsClean(true);
@@ -38,7 +38,7 @@ export const Search = ({ data }) => {
             dispatch(DelFilteredPosts());
             setIsClean(false);
         }
-    }, [isClean]);
+    }, [isClean, dispatch]);
 
     return (
         <Form className="d-flex align-items-center">

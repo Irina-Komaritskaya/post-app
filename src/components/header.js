@@ -1,4 +1,3 @@
-//- закрыть при переходе
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -15,10 +14,9 @@ const user = {
 };
 
 export const Header = () => {
-    const buttonRef = React.useRef(null);
+    const buttonRef = useRef(null);
     const closeHandler = () => {
         buttonRef.current.children[1].click();
-        console.log(buttonRef);
     };
     return (
         <Navbar bg="light" expand="false" className="mb-3">

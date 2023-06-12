@@ -1,8 +1,5 @@
-//- дерганья при пагинации
-//- ключи!!
-
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+//-generateKey
+import React, { useState } from "react";
 import { Post } from "./post";
 import Container from "react-bootstrap/Container";
 import { Paging } from "./pagination";
@@ -18,7 +15,7 @@ export const Posts = ({ posts }) => {
     //     }, 500);
     //     return () => clearTimeout(timer);
     // }, [loading]);
-    console.log(generateKey());
+
     return (
         <Container>
             <Paging
