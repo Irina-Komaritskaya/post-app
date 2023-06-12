@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { putFilteredPosts, DelFilteredPosts } from "../store/actions";
 import CloseButton from "react-bootstrap/CloseButton";
+import { Container } from "react-bootstrap";
 
 export const Search = ({ data }) => {
     const dispatch = useDispatch();
@@ -41,16 +42,20 @@ export const Search = ({ data }) => {
     }, [isClean, dispatch]);
 
     return (
-        <Form className="d-flex align-items-center">
+        <Container className="d-flex align-items-center">
             <Form.Control
-                type="search"
+                type="text"
                 placeholder="Search"
                 className="me-2"
                 aria-label="Search"
                 onChange={onChange}
                 value={str}
             />
-            <Button variant="outline-success" onClick={searchHandler}>
+            <Button
+                variant="outline-success"
+                type="button"
+                onClick={searchHandler}
+            >
                 Search
             </Button>
             {!isHiddenCleanButton && (
@@ -58,8 +63,9 @@ export const Search = ({ data }) => {
                     onClick={cleanHendler}
                     aria-label="clean"
                     className="ms-2"
+                    type="reset"
                 />
             )}
-        </Form>
+        </Container>
     );
 };

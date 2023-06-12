@@ -1,28 +1,28 @@
 import axios from "axios";
 
-export async function getPosts() {
-    const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/posts"
-    );
+const api = axios.create({
+    baseURL:
+        process.env.REACT_APP_BASE_URL ||
+        "https://jsonplaceholder.typicode.com",
+});
+
+async function get(url) {
+    const response = await api.get(url);
     return response.data;
 }
+
+export async function getPosts() {
+    return get("/posts");
+}
+
 export async function getComments(id) {
-    const response = await axios.get(
-        `https://jsonplaceholder.typicode.com/posts/${id}/comments`
-    );
-    return response.data;
+    return get(`/posts/${id}/comments`);
 }
 
 export async function getUser(id) {
-    const response = await axios.get(
-        `https://jsonplaceholder.typicode.com/users/${id}`
-    );
-    return response.data;
+    return get(`/users/${id}`);
 }
 
 export async function getUserPosts(id) {
-    const response = await axios.get(
-        `https://jsonplaceholder.typicode.com/users/${id}/posts`
-    );
-    return response.data;
+    return get(`/users/${id}/posts`);
 }

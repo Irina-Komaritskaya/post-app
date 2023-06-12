@@ -14,7 +14,7 @@ export const Home = () => {
     const { filteredPosts } = useSelector((state) => state.posts);
     const { sortedPosts } = useSelector((state) => state.posts);
     const { posts } = useSelector((state) => state.posts);
-    const [postsForDisplay, setPostForDisplay] = useState(posts);
+    const [postsForDisplay, setPostForDisplay] = useState([]);
 
     useEffect(() => {
         dispatch(getPosts());
@@ -34,15 +34,15 @@ export const Home = () => {
 
     return (
         <Container>
-            <Row className="mb-3 justify-content-between align-items-end gap-2">
+            <Row className="mb-3 justify-content-between align-items-end">
                 <Col xs="auto" md={5}>
                     <Search data={posts} />
                 </Col>
                 <Col xs="auto" md={3} lg={2}>
                     <ToggleSort posts={postsForDisplay} />
                 </Col>
-                <Posts posts={postsForDisplay} />
             </Row>
+            <Posts posts={postsForDisplay} />
         </Container>
     );
 };

@@ -8,6 +8,8 @@ import { User } from "../components/user";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { v4 as generateKey } from "uuid";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 export const UserPage = () => {
     const { user } = useSelector((state) => state.user);
@@ -27,6 +29,9 @@ export const UserPage = () => {
         <Row className="justify-content-center p-2">
             <Col xs="auto" md={4}>
                 <User user={user} />
+                <Link to={"/"}>
+                    <Button variant="link">return to Home</Button>
+                </Link>
             </Col>
             <Col xs="auto" md={8}>
                 {userPosts.map((x) => (

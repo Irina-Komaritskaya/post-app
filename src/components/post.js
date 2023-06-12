@@ -10,18 +10,30 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
 import Image from "react-bootstrap/Image";
-import { v4 as generateKey } from "uuid";
+import { Spinners } from "./spinner";
 
 export const Post = ({ data }) => {
     const { comments } = useSelector((state) => state.comments);
     const [isClicked, setIsClicked] = useState(false);
     const dispatch = useDispatch();
+    const [loading, setloading] = useState(true);
+
+    useEffect(() => {
+        console.log(isClicked);
+    }, [isClicked]);
 
     useEffect(() => {
         if (isClicked === true) {
             dispatch(getComments(data.id));
         }
     }, [isClicked, data.id, dispatch]);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setloading(false);
+        }, 500);
+        return () => clearTimeout(timer);
+    }, [loading]);
 
     return (
         <Container className="filter bg-white mb-2 p-2">
@@ -36,7 +48,7 @@ export const Post = ({ data }) => {
             <div className="d-flex justify-content-end">
                 <Button
                     onClick={() => {
-                        setIsClicked(isClicked === true ? false : true);
+                        setIsClicked(!isClicked);
                     }}
                     variant="outline-secondary"
                     size="sm"
@@ -45,13 +57,17 @@ export const Post = ({ data }) => {
                 </Button>
             </div>
 
-            {isClicked && comments && (
-                <div>
-                    {comments.map((x) => (
-                        <Comment data={x} key={generateKey()} />
-                    ))}
-                </div>
-            )}
+            {isClicked &&
+                comments &&
+                (loading ? (
+                    <Spinners />
+                ) : (
+                    <div>
+                        {comments.map((x) => (
+                            <Comment data={x} key={x.id} />
+                        ))}
+                    </div>
+                ))}
         </Container>
     );
 };
