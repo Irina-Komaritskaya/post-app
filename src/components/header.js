@@ -8,7 +8,7 @@ import React, { useRef } from "react";
 
 const user = {
     username: "Irina",
-    name: "Irina Komaritskaia",
+    name: "Irina Komaritskaya",
     email: "reena.message@gmail.com",
     website: "github.com/Irina-Komaritskaya",
 };

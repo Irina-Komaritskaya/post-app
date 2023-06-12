@@ -7,8 +7,8 @@ import {
     GET_USER_SUCCESS,
     GET_USER_POSTS,
     GET_USER_POSTS_SUCCESS,
-    PUT_FILTERED_POSTS,
-    SORT_POSTS,
+    GET_FILTERED_POSTS,
+    GET_SORT_POSTS,
     DEL_FILTERED_POSTS,
     DEL_SORT_POSTS,
     GET_POSTS_FAIL,
@@ -92,27 +92,27 @@ export const getUserPostsFail = (error) => {
     };
 };
 
-export const putFilteredPosts = (payload) => {
+export const getFilteredPosts = (payload) => {
     return {
-        type: PUT_FILTERED_POSTS,
+        type: GET_FILTERED_POSTS,
         payload: payload,
     };
 };
 
-export const SortedPosts = (sortPosts) => {
+export const getSortedPosts = (sortPosts) => {
     return {
-        type: SORT_POSTS,
+        type: GET_SORT_POSTS,
         payload: sortPosts,
     };
 };
 
-export const DelSortedPosts = () => {
+export const delSortedPosts = () => {
     return {
         type: DEL_SORT_POSTS,
     };
 };
 
-export const DelFilteredPosts = () => {
+export const delFilteredPosts = () => {
     return {
         type: DEL_FILTERED_POSTS,
     };

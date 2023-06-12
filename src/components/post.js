@@ -12,7 +12,7 @@ import Stack from "react-bootstrap/Stack";
 import Image from "react-bootstrap/Image";
 import { Spinners } from "./spinner";
 
-export const Post = ({ data }) => {
+export const Post = React.memo(({ data }) => {
     const { comments } = useSelector((state) => state.comments);
     const [isClicked, setIsClicked] = useState(false);
     const dispatch = useDispatch();
@@ -31,9 +31,9 @@ export const Post = ({ data }) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setloading(false);
-        }, 500);
+        }, 1000);
         return () => clearTimeout(timer);
-    }, [loading]);
+    }, []);
 
     return (
         <Container className="filter bg-white mb-2 p-2">
@@ -58,7 +58,6 @@ export const Post = ({ data }) => {
             </div>
 
             {isClicked &&
-                comments &&
                 (loading ? (
                     <Spinners />
                 ) : (
@@ -70,4 +69,4 @@ export const Post = ({ data }) => {
                 ))}
         </Container>
     );
-};
+});

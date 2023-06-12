@@ -2,7 +2,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
-import { putFilteredPosts, DelFilteredPosts } from "../store/actions";
+import { getFilteredPosts, delFilteredPosts } from "../store/actions";
 import CloseButton from "react-bootstrap/CloseButton";
 import { Container } from "react-bootstrap";
 
@@ -23,7 +23,7 @@ export const Search = ({ data }) => {
     useEffect(() => {
         if (isClicked) {
             dispatch(
-                putFilteredPosts({ value: str, property: "title", posts: data })
+                getFilteredPosts({ value: str, property: "title", posts: data })
             );
             setIsClicked(false);
         }
@@ -36,7 +36,7 @@ export const Search = ({ data }) => {
     };
     useEffect(() => {
         if (isClean) {
-            dispatch(DelFilteredPosts());
+            dispatch(getFilteredPosts());
             setIsClean(false);
         }
     }, [isClean, dispatch]);

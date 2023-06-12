@@ -7,8 +7,8 @@ import {
     GET_USER_SUCCESS,
     GET_USER_POSTS,
     GET_USER_POSTS_SUCCESS,
-    PUT_FILTERED_POSTS,
-    SORT_POSTS,
+    GET_FILTERED_POSTS,
+    GET_SORT_POSTS,
     DEL_FILTERED_POSTS,
     DEL_SORT_POSTS,
     GET_COMMENTS_FAIL,
@@ -50,10 +50,10 @@ export const postsReducer = (state = initialState, action) => {
                 loadingPosts: false,
             };
             break;
-        case PUT_FILTERED_POSTS:
+        case GET_FILTERED_POSTS:
             state = { ...state, filteredPosts: filterPosts(action.payload) };
             break;
-        case SORT_POSTS:
+        case GET_SORT_POSTS:
             state = { ...state, sortedPosts: sortPosts(action.payload) };
             break;
         case DEL_SORT_POSTS:
