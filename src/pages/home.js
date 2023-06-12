@@ -23,7 +23,6 @@ export const Home = () => {
     useEffect(() => {
         if (sortedPosts && sortedPosts.length) {
             setPostForDisplay(sortedPosts);
-            console.log(sortedPosts);
         }
         if (filteredPosts && filteredPosts.length) {
             setPostForDisplay(filteredPosts);

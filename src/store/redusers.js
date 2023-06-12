@@ -55,15 +55,12 @@ export const postsReducer = (state = initialState, action) => {
             break;
         case SORT_POSTS:
             state = { ...state, sortedPosts: sortPosts(action.payload) };
-            console.log(state.sortedPosts);
             break;
         case DEL_SORT_POSTS:
             state = { ...state, sortedPosts: [] };
-            console.log(state);
             break;
         case DEL_FILTERED_POSTS:
             state = { ...state, filteredPosts: [] };
-            console.log(state);
             break;
         default:
             state = { ...state };

@@ -7,11 +7,11 @@ import { Post } from "../components/post";
 import { User } from "../components/user";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { v4 as generateKey } from "uuid";
 
 export const UserPage = () => {
     const { user } = useSelector((state) => state.user);
     const { userPosts } = useSelector((state) => state.userPosts);
-    console.log(userPosts);
     const param = useParams();
     const dispatch = useDispatch();
 
@@ -29,7 +29,7 @@ export const UserPage = () => {
             </Col>
             <Col xs="auto" md={8}>
                 {userPosts.map((x) => (
-                    <Post data={x} />
+                    <Post data={x} key={generateKey()} />
                 ))}
             </Col>
         </Row>

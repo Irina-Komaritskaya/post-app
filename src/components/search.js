@@ -30,7 +30,8 @@ export const Search = ({ data }) => {
 
     const cleanHendler = () => {
         setIsClean(true);
-        setIsHiddenCleanButton(false);
+        setStr("");
+        setIsHiddenCleanButton(true);
     };
     useEffect(() => {
         if (isClean) {
@@ -46,8 +47,8 @@ export const Search = ({ data }) => {
                 placeholder="Search"
                 className="me-2"
                 aria-label="Search"
-                defaultValue=""
                 onChange={onChange}
+                value={str}
             />
             <Button variant="outline-success" onClick={searchHandler}>
                 Search

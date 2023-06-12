@@ -11,13 +11,17 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
 import Image from "react-bootstrap/Image";
+import { v4 as generateKey } from "uuid";
+
 export const Post = ({ data }) => {
     const { comments } = useSelector((state) => state.comments);
     const [isClicked, setIsClicked] = useState(false);
     const dispatch = useDispatch();
+    console.log(isClicked);
 
     useEffect(() => {
         if (isClicked === true) {
+            console.log(comments);
             dispatch(getComments(data.id));
         }
     }, [isClicked]);
@@ -35,6 +39,7 @@ export const Post = ({ data }) => {
             <div className="d-flex justify-content-end">
                 <Button
                     onClick={() => {
+                        console.log(1);
                         setIsClicked(isClicked === true ? false : true);
                     }}
                     variant="outline-secondary"
@@ -47,7 +52,7 @@ export const Post = ({ data }) => {
             {isClicked && comments && (
                 <div>
                     {comments.map((x) => (
-                        <Comment data={x} />
+                        <Comment data={x} key={generateKey()} />
                     ))}
                 </div>
             )}

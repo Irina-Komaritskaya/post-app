@@ -19,6 +19,5 @@ export const sortPosts = ({ posts, order }) => {
 
         return 0;
     });
-    console.log(order);
     return result;
 };

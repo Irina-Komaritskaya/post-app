@@ -1,7 +1,9 @@
 import Pagination from "react-bootstrap/Pagination";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Container from "react-bootstrap/Container";
+
 export const Paging = ({ items }) => {
+    const wrapperRef = useRef(null);
     const [active, setActive] = useState(1);
     const [itemsPage, setItemsPage] = useState([]);
 
@@ -22,6 +24,7 @@ export const Paging = ({ items }) => {
                 active={number === active}
                 onClick={() => {
                     setActive(number);
+                    wrapperRef.current.scrollIntoView();
                 }}
             >
                 {number}
@@ -29,9 +32,11 @@ export const Paging = ({ items }) => {
         );
     }
     return (
-        <>
+        <div ref={wrapperRef}>
             {itemsPage}
-            <Pagination>{pages}</Pagination>
-        </>
+            <Container xs="auto" md={5} className="flex-wrap">
+                <Pagination>{pages}</Pagination>
+            </Container>
+        </div>
     );
 };

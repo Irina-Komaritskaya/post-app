@@ -24,6 +24,5 @@ export async function getUserPosts(id) {
     const response = await axios.get(
         `https://jsonplaceholder.typicode.com/users/${id}/posts`
     );
-    console.log(response.data);
     return response.data;
 }
