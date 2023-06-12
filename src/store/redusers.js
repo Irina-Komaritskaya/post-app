@@ -19,7 +19,7 @@ import {
 import { filterPosts, sortPosts } from "../services/utils";
 const initialState = {
     posts: [],
-    comments: [],
+    comments: {},
     user: {},
     userPosts: [],
     loadingUser: false,
@@ -77,7 +77,10 @@ export const commentsReducer = (state = initialState, action) => {
         case GET_COMMENTS_SUCCESS:
             state = {
                 ...state,
-                comments: action.payload,
+                comments: {
+                    ...state.comments,
+                    [action.payload[0].postId]: action.payload,
+                },
                 loadingComments: false,
             };
             break;

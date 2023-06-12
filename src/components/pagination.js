@@ -1,7 +1,6 @@
 import Pagination from "react-bootstrap/Pagination";
 import React, { useEffect, useState, useRef } from "react";
 import Container from "react-bootstrap/Container";
-import { TransitionGroup } from "react-transition-group";
 
 export const Paging = ({ items }) => {
     const wrapperRef = useRef(null);
@@ -37,13 +36,11 @@ export const Paging = ({ items }) => {
         );
     }
     return (
-        <TransitionGroup transitionName="example">
-            <div ref={wrapperRef}>
-                {itemsPage}
-                <Container xs="auto" md={5}>
-                    <Pagination className="flex-wrap">{pages}</Pagination>
-                </Container>
-            </div>
-        </TransitionGroup>
+        <div ref={wrapperRef}>
+            {itemsPage}
+            <Container xs="auto" md={5}>
+                <Pagination className="flex-wrap">{pages}</Pagination>
+            </Container>
+        </div>
     );
 };

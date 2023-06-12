@@ -12,28 +12,26 @@ import Stack from "react-bootstrap/Stack";
 import Image from "react-bootstrap/Image";
 import { Spinners } from "./spinner";
 
-export const Post = React.memo(({ data }) => {
+export const Post = ({ data }) => {
     const { comments } = useSelector((state) => state.comments);
     const [isClicked, setIsClicked] = useState(false);
     const dispatch = useDispatch();
     const [loading, setloading] = useState(true);
 
     useEffect(() => {
-        console.log(isClicked);
-    }, [isClicked]);
-
-    useEffect(() => {
         if (isClicked === true) {
             dispatch(getComments(data.id));
+            setloading(true);
         }
     }, [isClicked, data.id, dispatch]);
 
     useEffect(() => {
+        console.log(data.id, isClicked);
         const timer = setTimeout(() => {
             setloading(false);
-        }, 1000);
+        }, 3000);
         return () => clearTimeout(timer);
-    }, []);
+    }, [data.id, isClicked]);
 
     return (
         <Container className="filter bg-white mb-2 p-2">
@@ -41,7 +39,7 @@ export const Post = React.memo(({ data }) => {
                 <Link to={`/user/${data.userId}`}>
                     <Image src={avatar} roundedCircle alt="avatar" />
                 </Link>
-                <div className="ms-2 fw-bold">User</div>
+                <div className="ms-2 fw-bold">User #{data.userId}</div>
             </Stack>
             <h2 className="fw-bold text-lowercase fs-5">{data.title}</h2>
             <p className="text-lowercase">{data.body}</p>
@@ -56,17 +54,19 @@ export const Post = React.memo(({ data }) => {
                     Comments
                 </Button>
             </div>
-
             {isClicked &&
                 (loading ? (
                     <Spinners />
                 ) : (
-                    <div>
-                        {comments.map((x) => (
-                            <Comment data={x} key={x.id} />
-                        ))}
-                    </div>
+                    comments &&
+                    comments[data.id] && (
+                        <div>
+                            {comments[data.id].map((x) => (
+                                <Comment data={x} key={x.id} />
+                            ))}
+                        </div>
+                    )
                 ))}
         </Container>
     );
-});
+};

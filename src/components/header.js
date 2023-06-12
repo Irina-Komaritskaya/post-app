@@ -5,7 +5,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
 import { User } from "./user";
 import React, { useRef } from "react";
-
+import avatar from "../img/photo.jpeg";
 const user = {
     username: "Irina",
     name: "Irina Komaritskaya",
@@ -43,7 +43,7 @@ export const Header = () => {
                                 About
                             </Link>
                         </Nav>
-                        <User user={user} />
+                        <User user={user} src={avatar} />
                     </Offcanvas.Body>
                 </Navbar.Offcanvas>
             </Container>

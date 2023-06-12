@@ -1,12 +1,11 @@
-import avatar from "../img/avatar.jpg";
 import Card from "react-bootstrap/Card";
 import Stack from "react-bootstrap/Stack";
 
-export const User = ({ user }) => {
+export const User = ({ user, src }) => {
     return (
         <Card>
             <Card.Body>
-                <Card.Img variant="top" src={avatar} alt="avatar" />
+                <Card.Img variant="top" src={src} alt="avatar" />
                 <Card.Title className="text-center mt-2 mb-3">
                     {"@" + user.username}
                 </Card.Title>
