@@ -2,17 +2,16 @@ import Pagination from "react-bootstrap/Pagination";
 import React, { useEffect, useState, useRef } from "react";
 import Container from "react-bootstrap/Container";
 
-export const Paging = ({ items }) => {
-    const wrapperRef = useRef(null);
+export const Paging = ({ items, perPage = 10 }) => {
+    const scrollRef = useRef(null);
     const [active, setActive] = useState(1);
     const [itemsPage, setItemsPage] = useState([]);
 
     useEffect(() => {
         const slicedItems = items.slice(
-            (active - 1) * 10,
-            (active - 1) * 10 + 10
+            (active - 1) * perPage,
+            (active - 1) * perPage + perPage
         );
-
         setItemsPage(slicedItems);
     }, [active, items]);
 
@@ -21,14 +20,14 @@ export const Paging = ({ items }) => {
     }, [items]);
 
     let pages = [];
-    for (let number = 1; number <= items.length / 10; number++) {
+    for (let number = 1; number <= items.length / perPage; number++) {
         pages.push(
             <Pagination.Item
                 key={number}
                 active={number === active}
                 onClick={() => {
                     setActive(number);
-                    wrapperRef.current.scrollIntoView();
+                    scrollRef.current.scrollIntoView();
                 }}
             >
                 {number}
@@ -36,7 +35,7 @@ export const Paging = ({ items }) => {
         );
     }
     return (
-        <div ref={wrapperRef}>
+        <div ref={scrollRef}>
             {itemsPage}
             <Container xs="auto" md={5}>
                 <Pagination className="flex-wrap">{pages}</Pagination>

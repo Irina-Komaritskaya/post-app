@@ -1,4 +1,5 @@
 import Container from "react-bootstrap/Container";
+
 export const Comment = ({ data }) => {
     return (
         <Container className="pt-2">

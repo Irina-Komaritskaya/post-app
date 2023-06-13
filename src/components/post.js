@@ -10,27 +10,18 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
 import Image from "react-bootstrap/Image";
-import { Spinners } from "./spinner";
+import { SpinnerDelay } from "../hocs/spiner-hoc";
 
 export const Post = ({ data }) => {
     const { comments } = useSelector((state) => state.comments);
     const [isClicked, setIsClicked] = useState(false);
     const dispatch = useDispatch();
-    const [loading, setloading] = useState(true);
 
     useEffect(() => {
         if (isClicked === true) {
             dispatch(getComments(data.id));
-            setloading(true);
         }
     }, [isClicked, data.id, dispatch]);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setloading(false);
-        }, 3000);
-        return () => clearTimeout(timer);
-    }, [data.id, isClicked]);
 
     return (
         <Container className="filter bg-white mb-2 p-2">
@@ -44,28 +35,21 @@ export const Post = ({ data }) => {
             <p className="text-lowercase">{data.body}</p>
             <div className="d-flex justify-content-end">
                 <Button
-                    onClick={() => {
-                        setIsClicked(!isClicked);
-                    }}
+                    onClick={() => setIsClicked(!isClicked)}
                     variant="outline-secondary"
                     size="sm"
                 >
                     Comments
                 </Button>
             </div>
-            {isClicked &&
-                (loading ? (
-                    <Spinners />
-                ) : (
-                    comments &&
-                    comments[data.id] && (
-                        <div>
-                            {comments[data.id].map((x) => (
-                                <Comment data={x} key={x.id} />
-                            ))}
-                        </div>
-                    )
-                ))}
+            {isClicked && (
+                <SpinnerDelay>
+                    {comments[data.id] &&
+                        comments[data.id].map((x) => (
+                            <Comment data={x} key={x.id} />
+                        ))}
+                </SpinnerDelay>
+            )}
         </Container>
     );
 };

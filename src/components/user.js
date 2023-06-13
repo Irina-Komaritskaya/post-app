@@ -12,16 +12,16 @@ export const User = ({ user, src }) => {
                 <Card.Text>
                     <Stack gap={3}>
                         <Stack direction="horizontal" gap={1}>
-                            <div className="fw-bold">Name:</div>
-                            <div>{user.name}</div>
+                            <span className="fw-bold">Name:</span>
+                            <span>{user.name}</span>
                         </Stack>
 
                         <Stack direction="horizontal" gap={1}>
-                            <div className="fw-bold">Email:</div>
-                            <div>{user.email}</div>
+                            <span className="fw-bold">Email:</span>
+                            <span>{user.email}</span>
                         </Stack>
                         <Stack direction="horizontal" gap={1}>
-                            <div className="fw-bold">Website:</div>
+                            <span className="fw-bold">Website:</span>
                             <a target="_blank" href={`https://${user.website}`}>
                                 {user.website}
                             </a>

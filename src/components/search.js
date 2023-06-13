@@ -29,14 +29,14 @@ export const Search = ({ data }) => {
         }
     }, [isClicked, data, dispatch, str]);
 
-    const cleanHendler = () => {
+    const cleanHandler = () => {
         setIsClean(true);
         setStr("");
         setIsHiddenCleanButton(true);
     };
     useEffect(() => {
         if (isClean) {
-            dispatch(getFilteredPosts());
+            dispatch(delFilteredPosts());
             setIsClean(false);
         }
     }, [isClean, dispatch]);
@@ -60,7 +60,7 @@ export const Search = ({ data }) => {
             </Button>
             {!isHiddenCleanButton && (
                 <CloseButton
-                    onClick={cleanHendler}
+                    onClick={cleanHandler}
                     aria-label="clean"
                     className="ms-2"
                     type="reset"

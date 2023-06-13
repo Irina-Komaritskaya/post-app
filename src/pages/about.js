@@ -2,6 +2,8 @@ import avatar from "../img/photo.jpeg";
 import Card from "react-bootstrap/Card";
 import Stack from "react-bootstrap/Stack";
 import Row from "react-bootstrap/Row";
+import { myprofile } from "../helpers/my-profile";
+
 export const About = () => {
     return (
         <Row md={4} className="justify-content-center">
@@ -14,19 +16,16 @@ export const About = () => {
                     <Card.Text>
                         <Stack gap={3}>
                             <Stack direction="horizontal" gap={1}>
-                                <div className="fw-bold">Name:</div>
-                                <div>Komaritskaya Irina</div>
+                                <span className="fw-bold">Name:</span>
+                                <span>{myprofile.name}</span>
                             </Stack>
                             <Stack direction="horizontal" gap={1}>
-                                <div className="fw-bold">Position:</div>
-                                <div>Front-End developer</div>
+                                <span className="fw-bold">Position:</span>
+                                <span>{myprofile.position}</span>
                             </Stack>
                             <Stack gap={1}>
-                                <div className="fw-bold">Technologies:</div>
-                                <div>
-                                    React, Redux, HTML5, JS, jQuery, CSS, SCSS,
-                                    Pug, Webpack, CyPress, TypeScript.
-                                </div>
+                                <span className="fw-bold">Technologies:</span>
+                                <span>{myprofile.technologies}</span>
                             </Stack>
                             <Stack direction="horizontal" gap={1}>
                                 <a

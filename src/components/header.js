@@ -6,25 +6,23 @@ import { Link } from "react-router-dom";
 import { User } from "./user";
 import React, { useRef } from "react";
 import avatar from "../img/photo.jpeg";
-const user = {
-    username: "Irina",
-    name: "Irina Komaritskaya",
-    email: "reena.message@gmail.com",
-    website: "github.com/Irina-Komaritskaya",
-};
+import { myprofile } from "../helpers/my-profile";
 
 export const Header = () => {
     const buttonRef = useRef(null);
+    console.log(myprofile);
     const closeHandler = () => {
-        buttonRef.current.children[1].click();
+        const closeButton = buttonRef.current.children[1];
+        closeButton.click();
     };
+
     return (
         <Navbar bg="light" expand="false" className="mb-3">
             <Container fluid>
-                <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-false`} />
+                <Navbar.Toggle aria-controls="offcanvasNavbar-expand-false" />
                 <Navbar.Offcanvas
-                    id={`offcanvasNavbar-expand-false`}
-                    aria-labelledby={`offcanvasNavbarLabel-expand-false`}
+                    id="offcanvasNavbar-expand-false"
+                    aria-labelledby="offcanvasNavbarLabel-expand-false"
                     placement="start"
                 >
                     <Offcanvas.Header
@@ -43,7 +41,7 @@ export const Header = () => {
                                 About
                             </Link>
                         </Nav>
-                        <User user={user} src={avatar} />
+                        <User user={myprofile} src={avatar} />
                     </Offcanvas.Body>
                 </Navbar.Offcanvas>
             </Container>

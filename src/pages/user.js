@@ -7,7 +7,6 @@ import { Post } from "../components/post";
 import { User } from "../components/user";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { v4 as generateKey } from "uuid";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import avatar from "../img/avatar.jpg";
@@ -36,7 +35,7 @@ export const UserPage = () => {
             </Col>
             <Col xs="auto" md={8}>
                 {userPosts.map((x) => (
-                    <Post data={x} key={generateKey()} />
+                    <Post data={x} key={x.id} />
                 ))}
             </Col>
         </Row>

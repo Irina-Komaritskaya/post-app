@@ -23,11 +23,9 @@ export const Home = () => {
     useEffect(() => {
         if (sortedPosts && sortedPosts.length) {
             setPostForDisplay(sortedPosts);
-        }
-        if (filteredPosts && filteredPosts.length) {
+        } else if (filteredPosts && filteredPosts.length) {
             setPostForDisplay(filteredPosts);
-        }
-        if (!filteredPosts.length && !sortedPosts.length) {
+        } else {
             setPostForDisplay(posts);
         }
     }, [filteredPosts, posts, sortedPosts]);
