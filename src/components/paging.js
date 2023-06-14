@@ -13,7 +13,7 @@ export const Paging = ({ items, perPage = 10 }) => {
             (active - 1) * perPage + perPage
         );
         setItemsPage(slicedItems);
-    }, [active, items]);
+    }, [active, items, perPage]);
 
     useEffect(() => {
         setActive(1);

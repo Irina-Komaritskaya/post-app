@@ -8,12 +8,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { getPosts } from "../store/actions";
 import { useDispatch } from "react-redux";
+import { sortPosts } from "../services/utils";
 
 export const Home = () => {
     const dispatch = useDispatch();
     const { filteredPosts } = useSelector((state) => state.posts);
-    const { sortedPosts } = useSelector((state) => state.posts);
-    const { posts } = useSelector((state) => state.posts);
+    const { posts, postsOrder } = useSelector((state) => state.posts);
     const [postsForDisplay, setPostForDisplay] = useState([]);
 
     useEffect(() => {
@@ -21,14 +21,15 @@ export const Home = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        if (sortedPosts && sortedPosts.length) {
-            setPostForDisplay(sortedPosts);
-        } else if (filteredPosts && filteredPosts.length) {
-            setPostForDisplay(filteredPosts);
-        } else {
-            setPostForDisplay(posts);
+        let currentPosts = filteredPosts || posts;
+        if (postsOrder && postsOrder !== "") {
+            currentPosts = sortPosts({
+                posts: currentPosts,
+                order: postsOrder,
+            });
         }
-    }, [filteredPosts, posts, sortedPosts]);
+        setPostForDisplay(currentPosts);
+    }, [filteredPosts, posts, postsOrder]);
 
     return (
         <Container>
@@ -37,7 +38,7 @@ export const Home = () => {
                     <Search data={posts} />
                 </Col>
                 <Col xs="auto" md={3} lg={2}>
-                    <ToggleSort posts={postsForDisplay} />
+                    <ToggleSort posts={postsForDisplay} current={postsOrder} />
                 </Col>
             </Row>
             <Posts posts={postsForDisplay} />

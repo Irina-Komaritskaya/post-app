@@ -10,15 +10,16 @@ import {
     GET_FILTERED_POSTS,
     GET_SORT_POSTS,
     DEL_FILTERED_POSTS,
-    DEL_SORT_POSTS,
     GET_COMMENTS_FAIL,
     GET_POSTS_FAIL,
     GET_USER_FAIL,
     GET_USER_POSTS_FAIL,
 } from "./action-types";
-import { filterPosts, sortPosts } from "../services/utils";
+import { filterPosts } from "../services/utils";
+
 const initialState = {
     posts: [],
+    postsOrder: "",
     comments: {},
     user: {},
     userPosts: [],
@@ -26,13 +27,13 @@ const initialState = {
     loadingPosts: false,
     loadingComments: false,
     loadingUserPosts: false,
-    filteredPosts: [],
-    sortedPosts: [],
+    filteredPosts: null,
     loadingfilteredPosts: false,
     error: {
         message: "",
     },
 };
+
 export const postsReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_POSTS:
@@ -54,13 +55,10 @@ export const postsReducer = (state = initialState, action) => {
             state = { ...state, filteredPosts: filterPosts(action.payload) };
             break;
         case GET_SORT_POSTS:
-            state = { ...state, sortedPosts: sortPosts(action.payload) };
-            break;
-        case DEL_SORT_POSTS:
-            state = { ...state, sortedPosts: [] };
+            state = { ...state, postsOrder: action.payload };
             break;
         case DEL_FILTERED_POSTS:
-            state = { ...state, filteredPosts: [] };
+            state = { ...state, filteredPosts: null };
             break;
         default:
             state = { ...state };

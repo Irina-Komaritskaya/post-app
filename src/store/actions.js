@@ -10,7 +10,6 @@ import {
     GET_FILTERED_POSTS,
     GET_SORT_POSTS,
     DEL_FILTERED_POSTS,
-    DEL_SORT_POSTS,
     GET_POSTS_FAIL,
     GET_USER_FAIL,
     GET_USER_POSTS_FAIL,
@@ -99,16 +98,10 @@ export const getFilteredPosts = (payload) => {
     };
 };
 
-export const getSortedPosts = (sortPosts) => {
+export const getSortedPosts = (order) => {
     return {
         type: GET_SORT_POSTS,
-        payload: sortPosts,
-    };
-};
-
-export const delSortedPosts = () => {
-    return {
-        type: DEL_SORT_POSTS,
+        payload: order,
     };
 };
 
